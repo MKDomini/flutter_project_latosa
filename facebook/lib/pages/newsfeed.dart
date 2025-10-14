@@ -1,4 +1,6 @@
+import 'package:facebook/model/story_model.dart';
 import 'package:facebook/widgets/createpost.dart';
+import 'package:facebook/widgets/storieslist.dart';
 import 'package:flutter/material.dart';
 
 class Newsfeed extends StatefulWidget {
@@ -9,6 +11,25 @@ class Newsfeed extends StatefulWidget {
 }
 
 class _NewsfeedState extends State<Newsfeed> {
+
+  List<StoryModel> stories = 
+  [
+    StoryModel(id: '1', username: 'Juan', profileImagePath: 'assets/profile/prof1.jpg', storyImagePath: 'assets/myday/myday1.jpg', timestamp: DateTime.now().subtract(const Duration (hours: 5)),
+     isViewed: false),
+     
+    StoryModel(id: '2', username: 'Steve', profileImagePath: 'assets/profile/prof2.jpg', storyImagePath: 'assets/myday/myday2.jpg', timestamp: DateTime.now().subtract(const Duration (hours: 24)),
+     isViewed: false),
+
+    StoryModel(id: '3', username: 'Hock', profileImagePath: 'assets/profile/prof3.jpg', storyImagePath: 'assets/myday/myday4.jpg', timestamp: DateTime.now().subtract(const Duration (hours: 15)),
+     isViewed: false),
+
+    StoryModel(id: '4', username: 'Damian', profileImagePath: 'assets/profile/prof4.jpg', storyImagePath: 'assets/myday/try.png', timestamp: DateTime.now().subtract(const Duration (hours: 12)),
+     isViewed: false),
+
+    StoryModel(id: '5', username: 'Devin', profileImagePath: 'assets/profile/prof5.jpg', storyImagePath: 'assets/myday/myday5.jpg', timestamp: DateTime.now().subtract(const Duration (hours: 14)),
+     isViewed: false)
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +45,11 @@ class _NewsfeedState extends State<Newsfeed> {
           DrawerButton(),
         ],
       ),
-      body: Column(children: [Createpost()],),
+      body: Column(children: [Createpost(),
+      StoriesList(
+        stories: stories,
+        onStoryTap: (story) {},
+      )],),
     );
   }
 }
